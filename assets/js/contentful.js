@@ -26,35 +26,61 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const card = document.createElement('div');
         card.className = 'card text-center';
-
+    
         const cardHeader = document.createElement('div');
         cardHeader.className = 'card-header';
         const dayName = document.createElement('h1');
         dayName.textContent = entry.fields.day;
         cardHeader.appendChild(dayName);
-
+    
         const cardBody = document.createElement('div');
         cardBody.className = 'card-body';
+    
+        // Check if activity and time fields are not empty
+        if (entry.fields.activity && entry.fields.time) {
+            const activityTimeContainer = document.createElement('div');
+    
+            const activityAndTime = document.createElement('h4');
+            activityAndTime.className = 'card-text';
+            activityAndTime.textContent = `${entry.fields.activity} - ${entry.fields.time}`;
+    
+            activityTimeContainer.appendChild(activityAndTime);
+            cardBody.appendChild(activityTimeContainer);
+        }
+    
+        // Check if activity2 and time2 fields are not empty
+        if (entry.fields.activity2 && entry.fields.time2) {
+            const activityTimeContainer2 = document.createElement('div');
+    
+            const activityAndTime2 = document.createElement('h4');
+            activityAndTime2.className = 'card-text';
+            activityAndTime2.className = 'mt-2';
+            activityAndTime2.textContent = `${entry.fields.activity2} - ${entry.fields.time2}`;
+    
+            activityTimeContainer2.appendChild(activityAndTime2);
+            cardBody.appendChild(activityTimeContainer2);
+        }
 
-        const activityName = document.createElement('h4');
-        activityName.className = 'card-text';
-        activityName.textContent = entry.fields.activity;
-
-        const activityTime = document.createElement('h3');
-        activityTime.className = 'card-text';
-        activityTime.textContent = entry.fields.time;
-
-        cardBody.appendChild(activityName);
-        cardBody.appendChild(activityTime);
-
+        // Check if activity3 and time3 fields are not empty
+        if (entry.fields.activity3 && entry.fields.time3) {
+          const activityTimeContainer3 = document.createElement('div');
+  
+          const activityAndTime3 = document.createElement('h4');
+          activityAndTime3.className = 'card-text';
+          activityAndTime3.className = 'mt-2';
+          activityAndTime3.textContent = `${entry.fields.activity3} - ${entry.fields.time3}`;
+  
+          activityTimeContainer3.appendChild(activityAndTime3);
+          cardBody.appendChild(activityTimeContainer3);
+      }
+    
         card.appendChild(cardHeader);
         card.appendChild(cardBody);
-
+    
         div.appendChild(card);
         scheduleContainer.appendChild(div);
-      });
+    });
     })
     .catch(console.error);
   
-
 });
